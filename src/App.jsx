@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import Layout from './components/Layout/Layout';
-import Request from './components/Workspace/Request/RequestPanel';
-import Response from './components/Workspace/Response/ResponsePanel';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Changed import statement
+import Home from './Home';
+import List from './components/List/List'
 
 const App = () => {
-  const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(false);
-
   return (
-    <>
-      <Layout>
-        <Request setResponse={setResponse} setLoading={setLoading} />
-        <Response response={response} loading={loading} />
-      </Layout>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/list" element={<List />} />
+      </Routes>
+    </Router>
   );
 };
 
